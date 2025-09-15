@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #ffffff;
+  --brand: #2D7A2D;
+  --brand-600: #236023;
+  --brand-100: #E1F3E1;
+  --accent: #4A9A4A;
+  --text: #1A1A1A;
+  --text-muted: #6B7280;
+  --border: #E5E7EB;
+  --surface: #F9FAFB;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-noto-serif-jp), 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    line-height: 1.4;
+  }
+
+  h2 {
+    font-size: 1.875rem;
+    line-height: 1.5;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    line-height: 1.6;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    line-height: 1.6;
+  }
+
+  /* スクロールバーのスタイリング（医療系らしい清潔感） */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--surface);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+  }
+}
+
+@layer components {
+  /* Skip to content link */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--brand);
+    color: white;
+    padding: 8px;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    z-index: 100;
+    font-size: 0.875rem;
+  }
+
+  .skip-link:focus {
+    top: 6px;
+  }
+
+  /* フォーカスリング */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2;
+  }
+
+  /* カードコンポーネント */
+  .card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(30, 91, 184, 0.08);
+    transition: box-shadow 0.2s ease-in-out;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 24px rgba(30, 91, 184, 0.12);
+  }
+
+  /* セクションの基本スタイル */
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section-sm {
+    padding: 3rem 0;
+  }
+
+  .section-lg {
+    padding: 6rem 0;
+  }
+
+  /* コンテナ */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding: 0 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding: 0 2rem;
+    }
+  }
+}
+
+@layer utilities {
+  /* テキストバランス（見出し用） */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* 文字組み最適化 */
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* グラデーション背景 */
+  .bg-gradient-brand {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%);
+  }
+
+  /* ホバーエフェクト */
+  .hover-lift {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+}
