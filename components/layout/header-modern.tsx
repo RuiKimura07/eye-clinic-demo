@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
@@ -13,6 +14,7 @@ const navigation = [
 ]
 
 export default function HeaderModern() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const pathname = usePathname()
   return (
     <header className="bg-white shadow-sm border-b border-neutral-200 sticky top-0 z-50">
@@ -82,16 +84,25 @@ export default function HeaderModern() {
             </Button>
 
             {/* モバイルメニューボタン */}
-            <button className="lg:hidden p-2 text-text-muted hover:text-brand hover:bg-neutral-50 rounded-lg transition-colors focus-ring">
+            <button
+              className="lg:hidden p-2 text-text-muted hover:text-brand hover:bg-neutral-50 rounded-lg transition-colors focus-ring"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="メニューを開く"
+            >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                {isMobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
               </svg>
             </button>
           </div>
         </div>
 
         {/* モバイルナビゲーション */}
-        <div className="lg:hidden border-t border-neutral-200 py-4">
+        {isMobileMenuOpen && (
+          <div className="lg:hidden border-t border-neutral-200 py-4">
           <nav className="space-y-2">
             {navigation.map((item) => {
               const isActive = pathname === item.href
@@ -104,6 +115,7 @@ export default function HeaderModern() {
                       ? 'text-brand bg-brand-100 font-semibold border border-brand-200 shadow-sm'
                       : 'text-text-muted hover:text-brand hover:bg-brand-50'
                   }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <span className="flex items-center">
                     {item.name}
@@ -129,7 +141,8 @@ export default function HeaderModern() {
               03-1234-5678
             </a>
           </div>
-        </div>
+          </div>
+        )}
       </div>
     </header>
   )
