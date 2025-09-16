@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:takayamaganka.com)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

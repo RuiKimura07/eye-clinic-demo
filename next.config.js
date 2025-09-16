@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // output: 'export', // Commented out to enable dynamic features like usePathname
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
   images: {

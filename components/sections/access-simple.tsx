@@ -3,15 +3,6 @@ export default function AccessSimple() {
     <section className="py-20 lg:py-32 bg-neutral-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* セクションヘッダー */}
-        <div className="text-center mb-20">
-          <h2 className="text-3xl lg:text-5xl font-bold text-text mb-6">
-            アクセス・診療時間
-          </h2>
-          <p className="text-lg lg:text-xl text-text-muted max-w-3xl mx-auto">
-            JR渋谷駅から徒歩5分の便利な立地。お車でお越しの方には専用駐車場もご用意しています。
-          </p>
-        </div>
 
         {/* メイン情報グリッド */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 mb-20">

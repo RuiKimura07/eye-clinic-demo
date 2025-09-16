@@ -60,7 +60,7 @@ export default function DoctorsPage() {
       <section className="py-24 lg:py-32 bg-gradient-to-br from-white via-brand-50 to-neutral-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold text-text mb-6 text-balance">
+            <h1 className="text-4xl lg:text-5xl font-bold text-brand mb-6 text-balance">
               医師紹介
             </h1>
             <p className="text-lg lg:text-xl text-text-muted text-pretty">

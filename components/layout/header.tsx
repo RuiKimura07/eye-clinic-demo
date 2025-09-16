@@ -54,10 +54,10 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  'text-base font-medium transition-colors focus-ring rounded-lg px-2 py-1',
+                  'text-base font-medium transition-colors focus-ring rounded-lg px-2 py-1 relative',
                   pathname === item.href
-                    ? 'text-brand'
-                    : 'text-text hover:text-brand'
+                    ? 'text-brand bg-brand-50 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-6 after:h-0.5 after:bg-brand after:rounded-full'
+                    : 'text-text hover:text-brand hover:bg-brand-50'
                 )}
               >
                 {item.name}
@@ -114,7 +114,7 @@ export default function Header() {
                   className={cn(
                     'text-base font-medium px-4 py-2 rounded-lg transition-colors focus-ring',
                     pathname === item.href
-                      ? 'text-brand bg-brand-50'
+                      ? 'text-brand bg-brand-50 border border-brand-200'
                       : 'text-text hover:text-brand hover:bg-brand-50'
                   )}
                   onClick={() => setIsMobileMenuOpen(false)}
