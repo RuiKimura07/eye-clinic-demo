@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/button'
+import { clinic, getTelLink } from '@/lib/clinic-config'
 
 const navigation = [
   { name: 'ホーム', href: '/' },
@@ -32,8 +33,8 @@ export default function HeaderModern() {
               </svg>
             </div>
             <div>
-              <div className="text-xl font-bold text-text">青空眼科</div>
-              <div className="text-xs text-text-muted">AOZORA EYE CLINIC</div>
+              <div className="text-xl font-bold text-text">{clinic.nameJa}</div>
+              <div className="text-xs text-text-muted">{clinic.nameEn}</div>
             </div>
           </Link>
 
@@ -65,17 +66,17 @@ export default function HeaderModern() {
             {/* 電話番号（デスクトップのみ） */}
             <div className="hidden lg:flex flex-col items-end">
               <a
-                href="tel:03-1234-5678"
+                href={getTelLink()}
                 className="text-brand font-semibold text-lg hover:text-brand-600 transition-colors focus-ring rounded px-2 py-1"
               >
-                03-1234-5678
+                {clinic.phone}
               </a>
-              <span className="text-xs text-text-muted">平日 9:00-18:00</span>
+              <span className="text-xs text-text-muted">{clinic.reservation.telHours}</span>
             </div>
 
             {/* WEB予約ボタン */}
             <Button asChild className="shadow-md">
-              <Link href="/contact">
+              <Link href={clinic.reservation.webPath}>
                 <svg className="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
@@ -132,13 +133,13 @@ export default function HeaderModern() {
 
           <div className="mt-4 pt-4 border-t border-neutral-200">
             <a
-              href="tel:03-1234-5678"
+              href={getTelLink()}
               className="flex items-center px-4 py-3 text-brand font-semibold hover:bg-brand-50 rounded-lg transition-colors"
             >
               <svg className="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
-              03-1234-5678
+              {clinic.phone}
             </a>
           </div>
           </div>

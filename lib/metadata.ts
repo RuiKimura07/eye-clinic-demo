@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
+import { clinic, getFullAddressWithoutPostal } from './clinic-config'
 
 export const siteConfig = {
-  name: '青空眼科クリニック',
-  description: '地域の皆様の目の健康を守る眼科クリニックです。最新の医療機器と丁寧な診療で、近視・遠視・乱視からドライアイ、白内障まで幅広く対応しています。',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://aozora-eyeclinic.example.com',
-  phone: '03-1234-5678',
-  address: '東京都渋谷区青空1-2-3 青空ビル2F',
+  name: clinic.nameJa,
+  description: clinic.description,
+  url: clinic.url,
+  phone: clinic.phone,
+  address: getFullAddressWithoutPostal(),
 }
 
 export const defaultMetadata: Metadata = {

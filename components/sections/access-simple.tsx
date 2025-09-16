@@ -1,3 +1,5 @@
+import { clinic, getTelLink, getFullAddress } from '@/lib/clinic-config'
+
 export default function AccessSimple() {
   return (
     <section className="py-20 lg:py-32 bg-neutral-50">
@@ -40,8 +42,8 @@ export default function AccessSimple() {
                     </svg>
                   </div>
                   <div>
-                    <div className="font-semibold text-text">青空眼科クリニック</div>
-                    <div className="text-text-muted">〒150-0002 東京都渋谷区渋谷1-2-3 青空ビル5F</div>
+                    <div className="font-semibold text-text">{clinic.nameJa}</div>
+                    <div className="text-text-muted">{getFullAddress()}</div>
                   </div>
                 </div>
 
@@ -52,7 +54,9 @@ export default function AccessSimple() {
                     </svg>
                   </div>
                   <div>
-                    <div className="font-semibold text-text">03-1234-5678</div>
+                    <a href={getTelLink()} className="font-semibold text-text hover:text-brand transition-colors">
+                      {clinic.phone}
+                    </a>
                     <div className="text-text-muted text-sm">予約・お問い合わせ</div>
                   </div>
                 </div>
@@ -75,29 +79,30 @@ export default function AccessSimple() {
             <div>
               <h3 className="text-2xl font-bold text-text mb-6">診療時間</h3>
               <div className="space-y-4">
-                <div className="grid grid-cols-4 gap-4 text-center border-b border-neutral-200 pb-2">
+                <div className="grid grid-cols-3 gap-4 text-center border-b border-neutral-200 pb-2">
                   <div className="font-semibold text-text">曜日</div>
                   <div className="font-semibold text-text">午前</div>
                   <div className="font-semibold text-text">午後</div>
-                  <div className="font-semibold text-text">夜間</div>
                 </div>
 
                 <div className="space-y-3">
-                  <div className="grid grid-cols-4 gap-4 text-center py-2">
-                    <div className="font-medium text-text">月〜金</div>
-                    <div className="text-text-muted">9:00-12:30</div>
-                    <div className="text-text-muted">14:00-17:30</div>
-                    <div className="text-text-muted">18:00-19:30</div>
+                  <div className="grid grid-cols-3 gap-4 text-center py-2">
+                    <div className="font-medium text-text">月・火・水・金</div>
+                    <div className="text-text-muted">{clinic.hours.mon.am}</div>
+                    <div className="text-text-muted">{clinic.hours.mon.pm}</div>
                   </div>
-                  <div className="grid grid-cols-4 gap-4 text-center py-2">
+                  <div className="grid grid-cols-3 gap-4 text-center py-2">
+                    <div className="font-medium text-text">木曜</div>
+                    <div className="text-text-muted">{clinic.hours.thu.am}</div>
+                    <div className="text-neutral-400">休診</div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-4 text-center py-2">
                     <div className="font-medium text-text">土曜</div>
-                    <div className="text-text-muted">9:00-12:30</div>
-                    <div className="text-text-muted">14:00-17:00</div>
-                    <div className="text-neutral-400">休診</div>
+                    <div className="text-text-muted">{clinic.hours.sat.am}</div>
+                    <div className="text-text-muted">{clinic.hours.sat.pm}</div>
                   </div>
-                  <div className="grid grid-cols-4 gap-4 text-center py-2">
+                  <div className="grid grid-cols-3 gap-4 text-center py-2">
                     <div className="font-medium text-text">日・祝</div>
-                    <div className="text-neutral-400">休診</div>
                     <div className="text-neutral-400">休診</div>
                     <div className="text-neutral-400">休診</div>
                   </div>

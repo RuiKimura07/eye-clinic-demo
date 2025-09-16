@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { siteConfig } from '@/lib/metadata'
+import { clinic, getTelLink, getTodayStatus } from '@/lib/clinic-config'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -31,19 +32,24 @@ export default function Footer() {
               <div className="space-y-2 text-sm text-text-muted">
                 <div className="flex justify-between">
                   <span>月・火・水・金</span>
-                  <span>9:00-12:30 / 15:00-18:00</span>
+                  <span>{clinic.hours.mon.am} / {clinic.hours.mon.pm}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>木曜日</span>
-                  <span>9:00-13:00</span>
+                  <span>{clinic.hours.thu.am}</span>
                 </div>
                 <div className="flex justify-between">
                   <span>土曜日</span>
-                  <span>9:00-12:30 / 14:00-17:00</span>
+                  <span>{clinic.hours.sat.am} / {clinic.hours.sat.pm}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span>日・祝</span>
+                  <span>{clinic.hours.holidayNote}</span>
                   <span>休診</span>
+                </div>
+                <div className="mt-3 pt-2 border-t border-neutral-200">
+                  <div className="text-xs">
+                    {getTodayStatus().message}
+                  </div>
                 </div>
               </div>
             </div>
@@ -110,10 +116,10 @@ export default function Footer() {
         <div className="border-t border-border py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
             <p className="text-sm text-text-muted">
-              © {currentYear} 青空眼科クリニック. All rights reserved.
+              © {currentYear} {clinic.nameJa}. All rights reserved.
             </p>
             <p className="text-sm text-text-muted">
-              〒150-0001 {siteConfig.address}
+              {clinic.address.postal} {clinic.address.line1} {clinic.address.building}
             </p>
           </div>
         </div>

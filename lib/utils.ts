@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import { clinic } from './clinic-config'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -17,42 +18,42 @@ export function createStructuredData() {
   return {
     '@context': 'https://schema.org',
     '@type': 'MedicalBusiness',
-    name: '青空眼科クリニック',
-    description: '地域の皆様の目の健康を守る眼科クリニックです。最新の医療機器と丁寧な診療で、近視・遠視・乱視からドライアイ、白内障まで幅広く対応しています。',
-    url: 'https://aozora-eyeclinic.example.com',
-    telephone: '+81-3-1234-5678',
-    email: 'info@aozora-eyeclinic.example.com',
+    name: clinic.nameJa,
+    description: clinic.description,
+    url: clinic.url,
+    telephone: clinic.phoneInternational,
+    email: clinic.email,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '青空1-2-3 青空ビル2F',
+      streetAddress: `${clinic.address.line1.split('渋谷区')[1]} ${clinic.address.building}`,
       addressLocality: '渋谷区',
       addressRegion: '東京都',
-      postalCode: '150-0001',
+      postalCode: clinic.address.postal.replace('〒', ''),
       addressCountry: 'JP',
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 35.6584,
-      longitude: 139.7016,
+      latitude: clinic.geo.latitude,
+      longitude: clinic.geo.longitude,
     },
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Friday'],
-        opens: '09:00',
-        closes: '18:00',
+        opens: clinic.hours.mon.am.split('-')[0],
+        closes: clinic.hours.mon.pm!.split('-')[1],
       },
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: 'Thursday',
-        opens: '09:00',
-        closes: '13:00',
+        opens: clinic.hours.thu.am.split('-')[0],
+        closes: clinic.hours.thu.am.split('-')[1],
       },
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: 'Saturday',
-        opens: '09:00',
-        closes: '17:00',
+        opens: clinic.hours.sat.am.split('-')[0],
+        closes: clinic.hours.sat.pm!.split('-')[1],
       },
     ],
     medicalSpecialty: ['Ophthalmology'],
